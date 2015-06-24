@@ -1,0 +1,10 @@
+hardstatus alwayslastline '%{rW}%H %{kW}%{-b ..}%-w%{+b ..}[[%n%f*%t]]%{-}%+w'
+defscrollback 10000
+startup_message off
+autodetach on
+escape ^Zz    # Save Ctrl-A for bash
+# Make xterm scrolling work properly with screen.
+termcapinfo xterm-256color|xterm-color|xterm|xterms|xs|rxvt ti@:te@
+shell -$SHELL
+bind c
+bind c stuff "screen -X chdir \$PWD;screen"
