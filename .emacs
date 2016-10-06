@@ -48,9 +48,10 @@
 )
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 
-(defun auto-complete-for-go ()
-  (auto-complete-mode 1))
-(add-hook 'go-mode-hook 'auto-complete-for-go)
+(defun my-go-mode-hook ()
+  (auto-complete-mode 1)
+  (add-hook 'before-save-hook 'gofmt-before-save))
+(add-hook 'go-mode-hook 'my-go-mode-hook)
 (with-eval-after-load 'go-mode
   (require 'go-autocomplete))
 
