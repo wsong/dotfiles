@@ -21,7 +21,9 @@
 (setq-default indent-tabs-mode nil)
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
-(set-frame-size (selected-frame) 105 70)
+(when (display-graphic-p)
+  (set-frame-size (selected-frame) 105 70)
+)
 
 (setq make-backup-files nil)
 (column-number-mode 1)
@@ -35,11 +37,13 @@
 
 (require 'ido)
 
-(require 'fill-column-indicator)
-(setq-default fill-column 79)
-(setq-default fci-rule-column 80)
-(setq-default fci-handle-truncate-lines nil)
-(add-hook 'after-change-major-mode-hook 'fci-mode)
+(when (display-graphic-p)
+  (require 'fill-column-indicator)
+  (setq-default fill-column 79)
+  (setq-default fci-rule-column 80)
+  (setq-default fci-handle-truncate-lines nil)
+  (add-hook 'after-change-major-mode-hook 'fci-mode)
+)
 
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
